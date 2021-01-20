@@ -11,7 +11,8 @@ CFLAGS = -I$(INCLUDE_PATH)
 
 #Define the dependencies
 PDEP =	main.c \
-		Utils.c
+		Utils.c \
+		Directory_Functions.c
 
 #Create the .o file with the needed functions
 POBJS = $(patsubst %.c,$(OBJS_PATH)/%.o,$(PDEP))		#For primary program

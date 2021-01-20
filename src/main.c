@@ -1,20 +1,21 @@
 /*File for quic command implementation*/
 #include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <dirent.h>
+#include <stdlib.h>		/*exit*/
 
 #include "Utils.h"
-
+#include "Directory_Functions.h"
 
 
 int main(int argc, char* argv[]){
-	bool start = validity_check(argv[1], argv[2]);
+	bool start = validity_check(argv[1], argv[2]);	/*Check validity of given arguments*/
 	
-	if(start == kFALSE)
+	if(start == kFALSE)								/*If src == dst, stop execution!*/
 		exit(-1);
 	
-	DIR *src, *dst;
+	Pdir d = open_or_create_directories(argv[1], argv[2]);	
 	
+	Dirent next_directory;
+
+	close_directories(d);
 	return 0;
 }
