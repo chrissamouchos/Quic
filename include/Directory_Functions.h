@@ -31,7 +31,27 @@ void close_directories(Pdir d);			/*Close directories, call dir_index_destroy() 
 // 	char           d_name[256]; /* Null-terminated filename 	*/
 // };
 
-typedef struct dirent Dirent;	/*Declare pointer to struct 	*/
+typedef struct dirent* Dirent;	/*Declare pointer to struct 	*/
+
+/*DT_BLK This is a block device.
+
+              DT_CHR 	This is a character device.
+
+              DT_DIR 	This is a directory.
+
+              DT_FIFO 	This is a named pipe (FIFO).
+
+              DT_LNK 	This is a symbolic link.
+
+              DT_REG 	This is a regular file.
+
+              DT_SOCK	This is a UNIX domain socket.
+
+              DT_UNKNOWN
+                     The file type could not be determined */
+
 /*-------------End of struct dirent ----------------------------*/
 
-void print_dir(DIR* dir);
+char* path_join(char* dest, const char* path,const char* suffix);
+
+void print_dir(DIR* dir, char* path);

@@ -1,6 +1,7 @@
 /*File for quic command implementation*/
 #include <stdio.h>
 #include <stdlib.h>		/*exit*/
+#include <unistd.h>
 
 #include "Utils.h"
 #include "Directory_Functions.h"
@@ -14,8 +15,8 @@ int main(int argc, char* argv[]){
 	
 	Pdir d = open_or_create_directories(argv[1], argv[2]);	
 	
-	Dirent next_directory;
-
+	print_dir(d -> src, ".");
+	
 	close_directories(d);
 	return 0;
 }
