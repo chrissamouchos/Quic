@@ -54,4 +54,4 @@ typedef struct dirent* Dirent;	/*Declare pointer to struct 	*/
 
 char* path_join(char* dest, const char* path,const char* suffix);
 
-void print_dir(DIR* dir, char* path);
+int print_dir(DIR* dir, char* path, int counter);

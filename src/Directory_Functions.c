@@ -70,38 +70,37 @@ void close_directories(Pdir d){
 	dir_index_destroy(d);	/*Free meemory of struct */
 }
 
-char* path_join(char* dest, const char* path,const char* suffix) {
-    sprintf(dest,"%s/%s",path,suffix);
+char* path_join(char* dest, const char* path,const char* suffix){
+    sprintf(dest,"%s/%s",path,suffix);								/*Combine previous path with current suffix to new string*/
     return dest;
 }
 
-void print_dir(DIR* dir, char* path){
+int print_dir(DIR* dir, char* path, int counter){
 	Dirent direnpt;							/*Struct to store info of current directory 		*/
 	DIR* inside;							/*Pointer to nested directory, useful for recursion	*/
 	
 	char temp[MAX_NAME_SIZE];				/*Max path to be stored 							*/
 
 /*-------------------MODIFICATIONS-----------------------------------*/
-	while((direnpt = readdir(dir)) != NULL){
+	while( (direnpt = readdir(dir) ) != NULL){
         path_join(temp, path, direnpt -> d_name);
-        
-        printf("%s\n", temp);
      
         if(strcmp(direnpt -> d_name,".") == 0 || strcmp(direnpt -> d_name,"..") == 0)
             continue;
      	
-        if(direnpt -> d_type == DT_DIR){
-            inside = opendir(direnpt -> d_name);
+        printf("%s\n", temp);
+        counter++;
+        if((direnpt -> d_type) == DT_DIR){
+            inside = opendir(temp);
             
             if(inside != NULL)	
-               	print_dir(inside, temp);
-            
+               counter += print_dir(inside, temp, counter);
+          
             closedir(inside);
         }
-
     }
 /*-------------------END OF MODIFICATIONS-----------------------------*/
-	return;
+	return counter;
 }
 
 // if(direnpt -> d_type == DT_DIR && (flag > 2)){

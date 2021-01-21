@@ -14,9 +14,9 @@ int main(int argc, char* argv[]){
 		exit(-1);
 	
 	Pdir d = open_or_create_directories(argv[1], argv[2]);	
-	
-	print_dir(d -> src, ".");
-	
+	int counter = 0;
+	counter = print_dir(d -> src, ".", counter);
+	printf("\n\nthere are %d files/directories in the hierarchy\n", counter);
 	close_directories(d);
 	return 0;
 }
