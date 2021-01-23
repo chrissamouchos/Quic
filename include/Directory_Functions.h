@@ -52,6 +52,10 @@ typedef struct dirent* Dirent;	/*Declare pointer to struct 	*/
 
 /*-------------End of struct dirent ----------------------------*/
 
-char* path_join(char* dest, const char* path,const char* suffix);
+char* path_join(char* dest, const char* path,const char* suffix);	/*join strings together in path format 	*/
 
-int print_dir(DIR* dir, char* path, int counter);
+int print_dir(DIR* dir, char* path);	/*Print all content of given directory 					*/
+
+void deep_copy(DIR* src, char* src_path, char* dst_path);					/*Copy all content of src directory to dst directory 	*/
+
+void copy_file(char* name, int BUFFSIZE);

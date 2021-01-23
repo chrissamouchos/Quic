@@ -57,3 +57,9 @@ clean:
 	rm -f $(POBJS) $(PEXEC) $(SOBJS) $(SLAVE);\
 	rm -f gmon.out;  \
 	}
+
+kill_dir:
+	rm -rf test
+
+test:
+	./$(PEXEC) . test
