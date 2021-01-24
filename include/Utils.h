@@ -30,13 +30,12 @@ void usage(); /*Print proper input format*/
 
 /*-------------- Find size and Time -----------*/
 typedef struct statistic{
-	float 	time_elapsed;
-	int 	dir_size;
-	float 	pace;
+	float 	time_elapsed;	/*Store time elapsed since start copying*/
+	int 	dir_size;		/*Store memory size of directory 		*/
+	float 	pace;			/*Store ratio 							*/
+	int 	counter;		/*copied files*/
 }statistics;
 
-typedef statistics* Stats;
+typedef statistics* Stats;									 /*Pointer to statistics 	*/
 
-Stats statistics_create(void);
-
-void statistics_destroy(Stats s);
+statistics add_to_current(statistics final, statistics cur); /*final += cur 			*/

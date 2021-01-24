@@ -59,7 +59,7 @@ clean:
 	}
 
 kill_dir:
-	rm -rf test
+	rm -rf ../test
 
 test:
 	./$(PEXEC) . ../test -v

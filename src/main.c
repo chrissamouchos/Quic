@@ -3,11 +3,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-/*--------- My libraries ---------------------*/
 
+/*--------- My libraries ---------------------*/
 #include "Utils.h"
 #include "Directory_Functions.h"
-
 /*--------- End of My libraries --------------*/
 
 int main(int argc, char* argv[]){
@@ -52,7 +51,8 @@ int main(int argc, char* argv[]){
 		exit(-1);
 	
 	Pdir dirs = open_or_create_directories(source, destination);	/*OPEN DIRECTORIES*/
-	
+	statistics s;
+
 	if(v == kTRUE){
 		int counter = 0;	/*store entities counted*/
 		
@@ -66,15 +66,32 @@ int main(int argc, char* argv[]){
 		/*Reqind DIR* to source, to start of directory again*/
 		cyan();
 		printf("\nRewinding Src directory pointer...\n");
-		reset();
+		reset();  
 		
-		rewinddir(dirs -> src);
+		rewinddir(dirs -> src);	/*Place pointer to start of file/directories list*/
 
-		deep_copy(dirs -> src, source, destination);
-		counter = print_dir(dirs -> dst, source);
-		printf("\n\nCopied %d files/directories in the hierarchy\n", counter);
+		s = update(dirs -> src, source, destination);
+		printf("\n\nCopied %d files/directories in the hierarchy\n", s.counter);
+		printf("copied %d bytes in %.3f at %.3f bytes/sec\n", s.dir_size, s.time_elapsed, s.dir_size/s.time_elapsed);
+	}
+	else{
+		s = update(dirs -> src, source, destination);
+		printf("\n\nCopied %d files/directories in the hierarchy\n", s.counter);
+		printf("copied %d bytes in %.3f at %.3f bytes/sec\n", s.dir_size, s.time_elapsed, s.dir_size/s.time_elapsed);
+	}
+
+	if(d == kTRUE){
+		red();
+		printf("Deletion is to be implemented...\n");
+		reset();
 	}
 	
+	if(l == kTRUE){
+		red();
+		printf("Soft/Hard Link handling is to be implemented...\n");
+		reset();
+	}
+
 	/*---------------- Free allocated memory -------------------*/
 	close_directories(dirs);
 	free(destination); free(source);
