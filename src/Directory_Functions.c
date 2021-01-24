@@ -99,8 +99,8 @@ int print_dir(DIR* dir, char* path){
         if((direnpt -> d_type) == DT_DIR){			/*file is directory 	*/
             inside = opendir(temp);					/*open found directory 	*/
             
-            if(inside != NULL)								/*If directory is empty just close it 			*/
-               counter += print_dir(inside, temp);			/*recursively call print and add found files 	*/
+            if(inside != NULL)						/*If directory is empty just close it 			*/
+               counter += print_dir(inside, temp);	/*recursively call print and add found files 	*/
           
             closedir(inside);	/*Close any found directory*/
         }
@@ -173,4 +173,13 @@ void copy_file(char* d_path, int src_fd){
 	close(src_fd);
 
 	return;
+}
+
+Stats dir_size(){
+	Stats s = statistics_create();
+	return s;
+}
+
+int file_size(){
+	return 1;
 }

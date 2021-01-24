@@ -24,4 +24,19 @@ void reset();	/*Reset color to default		*/
 
 bool validity_check(char* input1, char* input2); /*Check if src and dst are different*/
 
+void usage(); /*Print proper input format*/
+
 /*-------------- End of various Functions -----*/
+
+/*-------------- Find size and Time -----------*/
+typedef struct statistic{
+	float 	time_elapsed;
+	int 	dir_size;
+	float 	pace;
+}statistics;
+
+typedef statistics* Stats;
+
+Stats statistics_create(void);
+
+void statistics_destroy(Stats s);

@@ -31,3 +31,27 @@ bool validity_check(char* input1, char* input2){
 	}
 	return kTRUE;
 }
+
+void usage(){
+	red();
+	printf("Error: Wrong input\n");
+
+	cyan();
+	printf("Proper input: <./quic -v -d -l origindir destdir>\n");
+	reset();
+}
+
+
+Stats statistics_create(void){
+	Stats s = malloc(sizeof(statistics));
+
+	s -> time_elapsed = 0.0;
+	s -> dir_size = 0;
+	s -> pace = 0.0;
+
+	return s;
+}
+
+void statistics_destory(Stats s){
+	free(s);
+}

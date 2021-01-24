@@ -62,4 +62,4 @@ kill_dir:
 	rm -rf test
 
 test:
-	./$(PEXEC) . test
+	./$(PEXEC) . ../test -v
