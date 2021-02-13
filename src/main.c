@@ -52,27 +52,32 @@ int main(int argc, char* argv[]){
 		exit(-1);
 	
 	Pdir dirs = open_or_create_directories(source, destination);	/*OPEN DIRECTORIES*/
-	
+	statistics s;
+
 	if(v == kTRUE){
 		int counter = 0;	/*store entities counted*/
 		
-		cyan();
-		printf("Content of source directory\n");
-		reset();
+		// cyan();
+		// printf("Content of source directory\n");
+		// reset();
 		
-		counter = print_dir(dirs -> src, source);	/*Print content recursively*/
-		printf("\n\nthere are %d files/directories in the hierarchy\n", counter);
+		// counter = print_dir(dirs -> src, source);	/*Print content recursively*/
+		// printf("\n\nthere are %d files/directories in the hierarchy\n", counter);
 
 		/*Reqind DIR* to source, to start of directory again*/
-		cyan();
-		printf("\nRewinding Src directory pointer...\n");
-		reset();
+		// cyan();
+		// printf("\nRewinding Src directory pointer...\n");
+		// reset();  
 		
-		rewinddir(dirs -> src);
+		// rewinddir(dirs -> src);
 
-		deep_copy(dirs -> src, source, destination);
-		counter = print_dir(dirs -> dst, source);
-		printf("\n\nCopied %d files/directories in the hierarchy\n", counter);
+		s = update(dirs -> src, source, destination);
+		// counter = print_dir(dirs -> dst, source);
+		printf("\n\nCopied %d files/directories in the hierarchy\n", s.counter);
+		printf("copied %d bytes in %.3f at %.3f bytes/sec\n", s.dir_size, s.time_elapsed, s.dir_size/s.time_elapsed);
+	}
+	else{
+
 	}
 	
 	/*---------------- Free allocated memory -------------------*/

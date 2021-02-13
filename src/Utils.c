@@ -41,17 +41,10 @@ void usage(){
 	reset();
 }
 
+statistics add_to_current(statistics final, statistics cur){
+	final.time_elapsed 	= final.time_elapsed + cur.time_elapsed;
+	final.dir_size 		= final.dir_size 	 + cur.dir_size;
+	final.pace 			= final.dir_size 	 + cur.dir_size;
 
-Stats statistics_create(void){
-	Stats s = malloc(sizeof(statistics));
-
-	s -> time_elapsed = 0.0;
-	s -> dir_size = 0;
-	s -> pace = 0.0;
-
-	return s;
-}
-
-void statistics_destory(Stats s){
-	free(s);
+	return final;
 }
