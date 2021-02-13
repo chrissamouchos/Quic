@@ -82,4 +82,8 @@ float copy_file(char* name, int BUFFSIZE);							/*copy file and return time ela
                struct timespec st_mtim;  Time of last modification
                struct timespec st_ctim;  Time of last status change */
 
+<<<<<<< HEAD
 statistics update(DIR* src, char* src_path, char* dst_path);
+=======
+statistics update(DIR* src, char* src_path, char* dst_path); /*and/or copy files*/
+>>>>>>> 3d56cefe7c2f34a359dd1d6434299d500692faf8
