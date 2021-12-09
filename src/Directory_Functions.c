@@ -270,11 +270,9 @@ statistics update(DIR* src, char* src_path, char* dst_path){
 
       		if( (err = fstat(dst_fd, &buf1)) == -1) 
       			perror("Fstat1");
-<<<<<<< HEAD
-      		printf("%ld, %ld\n", buf.st_size, buf1.st_size);
-=======
       		
->>>>>>> 3d56cefe7c2f34a359dd1d6434299d500692faf8
+      		printf("%ld, %ld\n", buf.st_size, buf1.st_size);
+
       		if( (/*(err != -1) && */(buf.st_size == buf1.st_size)) || (difftime(buf.st_mtime, buf1.st_mtime) == 0.0) )	/*same files*/
       			continue;
       		

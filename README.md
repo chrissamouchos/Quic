@@ -1,13 +1,18 @@
-SADFASDF# Quic
+# Quic
 Implementation of Quic system call for Linux based systems.
 
-|| strcmp(s_dir -> d_name, dst_path) == 0
-η μαλακια οτι πρεπει να μην ειναι ο ενας φακελος μεσα στον αλλον για να δουλεψει, λεμαο
+Goal of this program is to copy quickly and effectively the hierarchy of folders and files when this procedure is needed repeatedly. A realistic case would be the synchronization of data in a remote desktop. The program understands which parts of the folder to be copied have been changed in order to renew the copy. In that way, computing time is beeing saved.
+It is important to mention, that in the first execution the code functions as the linux command "cp". Furthermore, all meta-data are copied too.
+If a file is deleted in the original folder, the program deletes the respective file also in the copy.
 
- παρατηρησα οτι στην δικη μου περιπτωση, στον ελεγχο παντα το timestamp ειναι διαφορετικα, αρα τα αρχεια θα γινονται overwrite καθε φορα. Ουσιαστικα, εγω θελω να ελεγξω μονο την ιδια μερα και οχι ωρα δευτερολεπτα κτλ; δηλαδη την ημερομηνια μονο, για να ξεφυγω απο αυτο το προβλημα
+## Execution
+The program is executed as followed:
+`` ./quic -v -d -l origindir destdir ``,
+where
+- quic is the executable
+- origin dir is the directory to be copied
+- v is the verbose flag, that prints info messages during execution
+- d informs the program that files are deleted in the original directory
+- l informs the program if soft and hard links should be considered during execution
 
-<<<<<<< HEAD
-etgy!
-=======
-etgy!
->>>>>>> 3d56cefe7c2f34a359dd1d6434299d500692faf8
+## Example

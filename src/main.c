@@ -64,7 +64,7 @@ int main(int argc, char* argv[]){
 		// printf("\n\nthere are %d files/directories in the hierarchy\n", counter);
 
 		/*Reqind DIR* to source, to start of directory again*/
-<<<<<<< HEAD
+
 		// cyan();
 		// printf("\nRewinding Src directory pointer...\n");
 		// reset();  
@@ -77,8 +77,6 @@ int main(int argc, char* argv[]){
 		printf("copied %d bytes in %.3f at %.3f bytes/sec\n", s.dir_size, s.time_elapsed, s.dir_size/s.time_elapsed);
 	}
 	else{
-
-=======
 		cyan();
 		printf("\nRewinding Src directory pointer...\n");
 		reset();  
@@ -99,7 +97,6 @@ int main(int argc, char* argv[]){
 		red();
 		printf("Deletion is to be implemented...\n");
 		reset();
->>>>>>> 3d56cefe7c2f34a359dd1d6434299d500692faf8
 	}
 	
 	if(l == kTRUE){
